@@ -16,7 +16,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::slotMenuClick(QModelIndex index){
-    ContainerWindow::create(model.getWidget(index))->show();
+    ContainerWindow::createWindow(model.getWidget(index))->show();
 }
 
 

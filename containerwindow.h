@@ -14,7 +14,7 @@ class ContainerWindow : public QMainWindow
 public:
     explicit ContainerWindow(QWidget *parent = 0);
     ~ContainerWindow();
-    static QMainWindow* create(QWidget* content)
+    static QMainWindow* createWindow(QWidget* content)
     {
         ContainerWindow* w = new ContainerWindow();
         w->setCentralWidget(content);
