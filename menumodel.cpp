@@ -3,8 +3,8 @@
 MenuModel::MenuModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
-    registry[0] = REG_WIDGET(AWidget);
-    registry[1] = REG_WIDGET(BWidget);
+    menu[0] = PAIR("AWidget", &MenuModel::createWidget<AWidget>);
+    menu[1] = PAIR("BWidget", &MenuModel::createWidget<BWidget>);
 }
 
 QVariant MenuModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -28,7 +28,7 @@ int MenuModel::rowCount(const QModelIndex &parent) const
     if (parent.isValid())
         return 0;
 
-    return registry.count();
+    return menu.count();
 }
 
 int MenuModel::columnCount(const QModelIndex &parent) const
@@ -41,12 +41,12 @@ int MenuModel::columnCount(const QModelIndex &parent) const
 
 QVariant MenuModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid()|| index.row() >= registry.count())
+    if (!index.isValid()|| index.row() >= menu.count())
         return QVariant();
 
     if (role == Qt::DisplayRole)
     {
-       return registry.find(index.row()).value().first;
+       return menu.find(index.row()).value().first;
     }
     return QVariant();
 }
@@ -54,5 +54,5 @@ QWidget* MenuModel::getWidget(const QModelIndex &index)
 {
     if (!index.isValid())
         return new QWidget();
-    return (registry.find(index.row()).value().second)();
+    return (menu.find(index.row()).value().second)();
 }

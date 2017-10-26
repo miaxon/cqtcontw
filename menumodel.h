@@ -7,7 +7,7 @@
 #include "bwidget.h"
 
 typedef QWidget* (*fncreate_t)();
-#define REG_WIDGET(x) QPair<QString, fncreate_t>(#x, &MenuModel::createWidget<x>)
+#define PAIR QPair<QString, fncreate_t>
 
 class MenuModel : public QAbstractTableModel
 {
@@ -27,7 +27,7 @@ public:
     QWidget* getWidget(const QModelIndex &index);
 
 private:
-    QMap<int, QPair<QString, fncreate_t>> registry;
+    QMap<int, QPair<QString, fncreate_t>> menu;
 
     template<typename T>
     static QWidget* createWidget(){
