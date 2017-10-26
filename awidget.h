@@ -13,11 +13,7 @@ class AWidget : public QWidget
 
 public:
     explicit AWidget(QWidget *parent = 0);
-    ~AWidget();
-    static QWidget* getInstance()
-    {
-        return new AWidget();
-    }
+    ~AWidget();    
 
 private:
     Ui::AWidget *ui;

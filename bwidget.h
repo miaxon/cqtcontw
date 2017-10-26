@@ -13,11 +13,7 @@ class BWidget : public AWidget
 
 public:
     explicit BWidget(QWidget *parent = 0);
-    ~BWidget();
-    static QWidget* getInstance()
-    {
-        return new BWidget();
-    }
+    ~BWidget();    
 
 private:
     Ui::BWidget *ui;

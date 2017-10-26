@@ -2,9 +2,11 @@
 #define MENUMODEL_H
 
 #include <QAbstractTableModel>
+#include <QMainWindow>
 #include "awidget.h"
 #include "bwidget.h"
 typedef QWidget* (*t_getInstance)();
+#define REG_WIDGET(x) QPair<QString, t_getInstance>(#x, &MenuModel::createWidget<x>)
 class MenuModel : public QAbstractTableModel
 {
     Q_OBJECT
@@ -23,7 +25,12 @@ public:
     QWidget* getWidget(const QModelIndex &index);
 
 private:
-    QMap<QString, t_getInstance> registry;
+    QMap<int, QPair<QString, t_getInstance>> registry;
+
+    template<typename T>
+    static QWidget* createWidget(){
+        return new T();
+    }
 };
 
 #endif // MENUMODEL_H
