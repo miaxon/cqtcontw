@@ -5,8 +5,8 @@
 #include <QMainWindow>
 #include "awidget.h"
 #include "bwidget.h"
-typedef QWidget* (*t_getInstance)();
-#define REG_WIDGET(x) QPair<QString, t_getInstance>(#x, &MenuModel::createWidget<x>)
+typedef QWidget* (*fncreate_t)();
+#define REG_WIDGET(x) QPair<QString, fncreate_t>(#x, &MenuModel::createWidget<x>)
 class MenuModel : public QAbstractTableModel
 {
     Q_OBJECT
@@ -25,7 +25,7 @@ public:
     QWidget* getWidget(const QModelIndex &index);
 
 private:
-    QMap<int, QPair<QString, t_getInstance>> registry;
+    QMap<int, QPair<QString, fncreate_t>> registry;
 
     template<typename T>
     static QWidget* createWidget(){
