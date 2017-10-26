@@ -2,7 +2,6 @@
 #define MENUMODEL_H
 
 #include <QAbstractTableModel>
-#include <QMainWindow>
 #include "awidget.h"
 #include "bwidget.h"
 
