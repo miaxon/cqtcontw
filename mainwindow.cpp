@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->ls_menu->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->ls_menu->horizontalHeader()->setStretchLastSection(true);
     this->move(QApplication::desktop()->screen()->rect().center()-this->rect().center());
     ui->ls_menu->setModel(&model);
 }

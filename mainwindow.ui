@@ -16,10 +16,10 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTableView" name="ls_menu"/>
+     <widget class="QLineEdit" name="le_filter"/>
     </item>
     <item>
-     <widget class="QLineEdit" name="le_filter"/>
+     <widget class="QTableView" name="ls_menu"/>
     </item>
    </layout>
   </widget>
