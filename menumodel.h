@@ -5,8 +5,10 @@
 #include <QMainWindow>
 #include "awidget.h"
 #include "bwidget.h"
+
 typedef QWidget* (*fncreate_t)();
 #define REG_WIDGET(x) QPair<QString, fncreate_t>(#x, &MenuModel::createWidget<x>)
+
 class MenuModel : public QAbstractTableModel
 {
     Q_OBJECT
