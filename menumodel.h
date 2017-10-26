@@ -6,7 +6,8 @@
 #include "bwidget.h"
 
 typedef QWidget* (*fncreate_t)();
-#define PAIR QPair<QString, fncreate_t>
+#define MENUITEM QPair<QString, fncreate_t>
+#define ACTION &MenuModel::createWidget
 
 class MenuModel : public QAbstractTableModel
 {

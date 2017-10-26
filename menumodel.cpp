@@ -3,8 +3,8 @@
 MenuModel::MenuModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
-    menu[0] = PAIR("AWidget", &MenuModel::createWidget<AWidget>);
-    menu[1] = PAIR("BWidget", &MenuModel::createWidget<BWidget>);
+    menu[0] = MENUITEM("AWidget", ACTION<AWidget>);
+    menu[1] = MENUITEM("BWidget", ACTION<BWidget>);
 }
 
 QVariant MenuModel::headerData(int section, Qt::Orientation orientation, int role) const
